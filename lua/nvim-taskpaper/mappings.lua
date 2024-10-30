@@ -1,4 +1,4 @@
--- File: /Users/rullrey/Documents/GitHub/nvim-taskpaper.nvim/lua/nvim-taskpaper/mappings.lua
+-- File: lua/nvim-taskpaper/mappings.lua
 local M = {}
 
 local function buf_map(bufnr, mode, lhs, rhs, opts)
@@ -12,6 +12,29 @@ end
 function M.setup(bufnr)
     if vim.g.no_plugin_maps or vim.g.no_taskpaper_maps then
         return
+    end
+
+    -- Register which-key descriptions
+    local ok, wk = pcall(require, "which-key")
+    if ok then
+        wk.register({
+            ["<leader>t"] = {
+                name = "TaskPaper",
+                ["."] = { "Fold Notes" },
+                ["P"] = { "Focus Project" },
+                ["j"] = { "Next Project" },
+                ["k"] = { "Previous Project" },
+                ["g"] = { "Go to Project" },
+                ["/"] = { "Search Keyword" },
+                ["s"] = { "Search Tag" },
+                ["d"] = { "Toggle Done" },
+                ["t"] = { "Toggle Today" },
+                ["x"] = { "Toggle Cancelled" },
+                ["D"] = { "Archive Done" },
+                ["T"] = { "Show Today" },
+                ["X"] = { "Show Cancelled" },
+            }
+        })
     end
 
     local cmd_prefix = "<cmd>lua require('nvim-taskpaper')"
