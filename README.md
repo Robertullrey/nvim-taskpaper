@@ -30,7 +30,7 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
 {
-    "rullrey/nvim-taskpaper",
+    "Robertullrey/nvim-taskpaper",
     ft = "taskpaper",
     config = function()
         require("nvim-taskpaper").setup()
